@@ -1,0 +1,83 @@
+###
+# Screenrc configuration file
+###
+# Приветственное сообщение off|on
+startup_message off
+
+#UTF8
+defutf8 on
+
+# визуальный биппер. off|onn
+vbell on
+# то, что он бипер пишет в строке статуса
+vbell_msg "   Uh! - Uh! - bzzz "
+
+# "Красивые" подписи
+nethack on
+
+# Количество строк истории хранить в буфере
+defscrollback 2000
+
+# Строка состояния в screen (hardstatus)
+#hardstatus alwayslastline "%{=b}%{g}Window: %{b}%w %=%{kG}%с %D %Y-%m-%d"
+#caption always "%{wb}%-w%{wr}%n %t%{-}%+w %=%{c}%{y}%d::%m::%Y %{g}%c:%s"
+#caption always "%{= 45}%{+b w}Screen: %n | %h %=%t %c"
+hardstatus alwayslastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+
+# Расшифровка:
+# здесь:
+# '%{=b}' - черный цвет фона строки.
+# '%{g} Window: ' - слово 'Window: ' зеленоe
+# '%{b}%w' - список запущенных окон (звездочкой будет указан активное окно)
+# '%=' - все, что идет после этого выравнивается по правому краю
+# '%{kG}%с' - показывает время, я люблю формат 24-часа, без pm|am (%C%A - 12часовой с PM|AM)
+# '%D, %Y-%m-%d' - показывает дату
+
+# --- Привязки специальных клавиш ---
+# отделить сессию от текущего терминала
+bindkey -k k7 detach
+# уничтожить текущую сессию F8
+bindkey -k k8 kill
+
+# создать новое окно F9
+bindkey -k k9 screen
+
+# вернуться к предыдущему окну F1
+bindkey -k F1 prev
+
+# перейти к следущему окну F2
+bindkey -k F2 next
+
+# Удаляем некоторые ненужные или небезопасные комбинации
+bind k
+bind ^k
+bind .
+bind ^\
+bind \\
+bind ^h
+bind h
+
+# Finally! Shift-pg up or down to view scrollback buffer
+#
+bindkey "^[[5;2~" eval "copy" "stuff ^u"
+bindkey -m "^[[5;2~" stuff ^u
+bindkey -m "^[[6;2~" stuff ^d
+
+# Начальные окна
+# Открыть оболочку для работы
+chdir
+screen -t Wrk0
+screen -t Wrk1
+screen -t Wrk2
+
+
+# Открыть оболочку для управления конфигурацией
+chdir /etc
+screen -t Etc
+    
+# Открыть оболочку для просмотра логов
+chdir /var/log
+screen -t Log
+
+# Выбрать первое окошко после старта
+select 1
