@@ -1,5 +1,5 @@
 #!/bin/bash
-#vs@Duke 20201109
+#vs@Duke 20201111
 #load files from github repository and add to home directory
 #  wget https://raw.githubusercontent.com/oldbobak/bash-scripts/master/
 # run it using
