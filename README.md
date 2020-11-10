@@ -6,3 +6,6 @@ Simple bash scripts for initial server setup
 .bashrc
 
 .screenrc
+
+Usage:
+ wget https://raw.githubusercontent.com/oldbobak/bash-scripts/master/get_scripts.sh -O - | bash
