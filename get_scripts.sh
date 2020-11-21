@@ -11,7 +11,7 @@ command -v wget >/dev/null 2>&1 || { echo >&2 "$0 require wget but it's not inst
 
 
 wget https://raw.githubusercontent.com/oldbobak/bash-scripts/master/screenrc -O ~/.screenrc
-wget https://raw.githubusercontent.com/oldbobak/bash-scripts/master/bash_aliases -O ~/.bashaliases
+wget https://raw.githubusercontent.com/oldbobak/bash-scripts/master/bash_aliases -O ~/.bash_aliases
 
 #if [ -f ~/.bashrc ] && [ grep Duke ~/.bashrc ]
 grep Duke ~/.bashrc  > /dev/null
