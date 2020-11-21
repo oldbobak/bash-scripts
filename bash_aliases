@@ -1,4 +1,5 @@
 ## vs@Duke 20201123
+## https://github.com/oldbobak/bash-scripts
 ## aliases workaround
 ## call command with 'command'
 # for example run genuine ls instead of aliased version
