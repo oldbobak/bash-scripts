@@ -96,7 +96,7 @@ alias Rsync="rsync -avv --stats --human-readable --itemize-changes --progress --
 
 #Get local and NATed IPs
 alias Localip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
-alias Myip="curl http://ipecho.net/plain; echo"
+alias Publicip="curl http://ipecho.net/plain; echo"
 #TCP/UDP ports 
 alias Ports="netstat -tulnp"
 alias TPports="netstat -tlnp"
