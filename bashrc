@@ -1,9 +1,9 @@
 # vs@Duke 20200103
 #   add this file to .bashrc
 # 
-#if [ -f ~/.bash_aliases ]; then
-#    . ~/.bash_aliases
-#fi
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 
 WHOAMI=`whoami`
 if [  "root"  = ${WHOAMI} ]
