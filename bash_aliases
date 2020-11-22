@@ -52,11 +52,6 @@ alias Reload="sudo systemctl reload "
 alias Enable="sudo systemctl enable "
 alias Disable="sudo systemctl disable "
 
-alias .="cd .."
-alias ..="cd ../.."
-alias ...="cd ../../.."
-alias ....="cd ../../../.."
-
 cat /etc/os-release | grep CentOS 2>&1 > /dev/null
 if [ $? -ne 0 ]
 then
@@ -88,6 +83,12 @@ else
     alias Provides="sudo dnf provides"
 fi
 
+#change dir aliases
+alias .="cd .."
+alias ..="cd ../.."
+alias ...="cd ../../.."
+alias ....="cd ../../../.."
+
 #File command aliases
 alias Ls="ls -p --color=auto --group-directories-first"
 alias Top10files="find . -type f -exec ls -sh {} \; | sort -n -r | head -10"
@@ -99,11 +100,12 @@ alias Localip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo
 alias Publicip="curl http://ipecho.net/plain; echo"
 #TCP/UDP ports 
 alias Ports="netstat -tulnp"
-alias TPports="netstat -tlnp"
-alias UPorts="netstat -ulnp"
-alias OPorts="netstat -tanp"
+alias Pportstcp="netstat -tlnp"
+alias Portsudp="netstat -ulnp"
+#alias OPorts="netstat -tanp"
 # Ping 5 times
-alias Ping='ping -c 5'
+alias Ping5='ping -c 5'
+alias Ping100='ping -c 100'
 #Get HTTP Headers
 alias Headers="curl -I"
 
@@ -153,6 +155,21 @@ if [ $? -eq 0 ]; then
   alias Dritrm="docker run -it --rm"
   alias Drmid="docker rmi $(docker images --filter 'dangling=true' -q --no-trunc)"
   alias Drmif="docker rmi -f"
+fi
+
+#Podman aliases
+which podman 2>/dev/null 1>/dev/null
+if [ $? -eq 0 ]; then
+  alias Pps="podman ps"
+  alias Plist="podman list -a"
+  alias Pstop="podman stop -t 2 --name"
+  alias Pimages="podman images"
+  alias Psystemd="podman generate systemd --name"
+  alias Plog="podman logs"
+  alias Ptop="podman top"
+  alias Pstart="podman start"
+  alias Pstartit="podman start --interactive --attach "
+  alias Pexec="podman exec -ti"
 fi
 
 # Command line head / tail shortcuts
