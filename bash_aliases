@@ -49,6 +49,7 @@ alias Start="sudo systemctl start "
 alias Stop="sudo systemctl stop "
 alias Restart="sudo systemctl restart "
 alias Reload="sudo systemctl reload "
+alias Daemon-reload="systemctl daemon-reload"
 alias Enable="sudo systemctl enable "
 alias Disable="sudo systemctl disable "
 
