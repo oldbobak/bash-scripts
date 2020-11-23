@@ -100,7 +100,7 @@ alias Localip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo
 alias Publicip="curl http://ipecho.net/plain; echo"
 #TCP/UDP ports 
 alias Ports="netstat -tulnp"
-alias Pportstcp="netstat -tlnp"
+alias Portstcp="netstat -tlnp"
 alias Portsudp="netstat -ulnp"
 #alias OPorts="netstat -tanp"
 # Ping 5 times
