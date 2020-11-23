@@ -6,7 +6,7 @@
 #  command ls
 ## List aliases
 #  alias
-## delete alias
+## delete one alias, forex mc
 #  unalias mc
 ## delete all aliases
 # unalias -a
@@ -53,6 +53,13 @@ alias Daemon-reload="systemctl daemon-reload"
 alias Enable="sudo systemctl enable "
 alias Disable="sudo systemctl disable "
 
+if [ $UID -ne 0 ]; then
+    alias reboot='sudo reboot'
+    alias poweroff='sudo /sbin/poweroff'
+    alias halt='sudo /sbin/halt'
+    alias shutdown='sudo /sbin/shutdown'
+fi
+
 cat /etc/os-release | grep CentOS 2>&1 > /dev/null
 if [ $? -ne 0 ]
 then
@@ -87,7 +94,6 @@ fi
 alias .="cd .."
 alias ..="cd ../.."
 alias ...="cd ../../.."
-alias ....="cd ../../../.."
 
 #File command aliases
 alias Ls="ls -p --color=auto --group-directories-first"
@@ -100,6 +106,8 @@ alias Localip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo
 alias Publicip="curl http://ipecho.net/plain; echo"
 #TCP/UDP ports 
 alias Ports="netstat -tulnp"
+#ss -lutn
+#
 alias Portstcp="netstat -tlnp"
 alias Portsudp="netstat -ulnp"
 #alias OPorts="netstat -tanp"
@@ -120,6 +128,7 @@ alias Pscpu10="ps auxf | sort -nr -k 3 | head -10"
 alias Ram='ps axch -o cmd:15,%mem --sort=-%mem | head'
 alias Psmem="ps auxf | sort -nr -k 4"
 alias Psmem10="ps auxf | sort -nr -k 4 | head -10"
+alias Df='df -h | grep -v tmpfs | grep -v udev | grep -v docker | grep -v snap | grep -v loop | grep -v shm | grep -v overlay'
 
 # Git Aliases
 which git 2>/dev/null 1>/dev/null
@@ -187,3 +196,5 @@ alias Plz='sudo $(fc -ln -1)'
 alias Fuck='echo sudo $(history -p !!) && sudo $(history -p !!)'
 alias Root='sudo -iu root'
 
+# Weather
+alias weather="curl -4 http://wttr.in"
