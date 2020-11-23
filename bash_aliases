@@ -167,6 +167,7 @@ if [ $? -eq 0 ]; then
   alias Pimages="podman images"
   alias Psystemd="podman generate systemd --name"
   alias Plog="podman logs"
+  alias Ptailf="podman logs -f"
   alias Ptop="podman top"
   alias Pstart="podman start"
   alias Pstartit="podman start --interactive --attach "
