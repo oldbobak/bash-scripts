@@ -197,4 +197,4 @@ alias Fuck='echo sudo $(history -p !!) && sudo $(history -p !!)'
 alias Root='sudo -iu root'
 
 # Weather
-alias weather="curl -4 http://wttr.in"
+alias Weather="curl -4 http://wttr.in"
