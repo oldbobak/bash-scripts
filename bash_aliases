@@ -91,9 +91,9 @@ else
 fi
 
 #change dir aliases
-alias .="cd .."
-alias ..="cd ../.."
-alias ...="cd ../../.."
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 
 #File command aliases
 alias Ls="ls -p --color=auto --group-directories-first"
