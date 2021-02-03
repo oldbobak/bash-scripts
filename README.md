@@ -11,5 +11,7 @@ Get additional configuration in next files:
   
   .vimrc
 
-Usage:
- wget https://raw.githubusercontent.com/oldbobak/bash-scripts/master/runme.sh -O - | bash
+cat > updatescripts.sh << EOT
+#!/bin/bash
+wget https://raw.githubusercontent.com/oldbobak/bash-scripts/master/runme.sh -O - | bash
+EOT 
