@@ -54,10 +54,10 @@ alias Enable="sudo systemctl enable "
 alias Disable="sudo systemctl disable "
 
 if [ $UID -ne 0 ]; then
-    alias reboot='sudo reboot'
-    alias poweroff='sudo /sbin/poweroff'
-    alias halt='sudo /sbin/halt'
-    alias shutdown='sudo /sbin/shutdown'
+    alias Reboot='sudo reboot'
+    alias Poweroff='sudo /sbin/poweroff'
+    alias Halt='sudo /sbin/halt'
+    alias Shutdown='sudo /sbin/shutdown'
 fi
 
 cat /etc/os-release | grep CentOS 2>&1 > /dev/null
@@ -90,22 +90,26 @@ else
     alias Provides="sudo dnf provides"
 fi
 
-#change dir aliases
+# change dir aliases
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
-#File command aliases
+# File command aliases
 alias Ls="ls -p --color=auto --group-directories-first"
 alias Top10files="find . -type f -exec ls -sh {} \; | sort -n -r | head -10"
-#copy using rsync
+# copy using rsync
 alias Rsync="rsync -avv --stats --human-readable --itemize-changes --progress --partial"
 
-#Get local and NATed IPs
+# Get local and NATed IPs
 alias Localip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
 alias Publicip="curl http://ipecho.net/plain; echo"
-#TCP/UDP ports 
+# TCP/UDP ports 
 alias Ports="netstat -tulnp"
+# Get current TCP connections
+alias Connections="netstat -ntu|awk '{print $5}'|cut -d: -f1 -s|sort|uniq -c|sort -nk1 -r"
+# Get active interfaces
+alias Interfaces="ip addr | awk '/state UP/ {print $2}' | sed 's/.$//'"
 #ss -lutn
 #
 alias Portstcp="netstat -tlnp"
@@ -117,18 +121,23 @@ alias Ping100='ping -c 100'
 #Get HTTP Headers
 alias Headers="curl -I"
 
-#System monitoring aliases
+# System monitoring aliases
 alias Mhz='watch -n 1 "cat /proc/cpuinfo | grep MHz"'
 alias Mem="free -m -l -t"
 
 alias Cpu='ps axch -o cmd:15,%cpu --sort=-%cpu | head'
 alias Pscpu="ps auxf | sort -nr -k 3"
 alias Pscpu10="ps auxf | sort -nr -k 3 | head -10"
-
+# Show most RAM-eat processes, GB
 alias Ram='ps axch -o cmd:15,%mem --sort=-%mem | head'
+# Show memory using processes statistics
 alias Psmem="ps auxf | sort -nr -k 4"
 alias Psmem10="ps auxf | sort -nr -k 4 | head -10"
+# Show disk statistics for filesystems on disk only
 alias Df='df -h | grep -v tmpfs | grep -v udev | grep -v docker | grep -v snap | grep -v loop | grep -v shm | grep -v overlay'
+# Show partitions on disks
+alias Partitions="lsblk -o name,size"
+
 
 # Git Aliases
 which git 2>/dev/null 1>/dev/null
@@ -162,7 +171,7 @@ if [ $? -eq 0 ]; then
   alias Dps="docker ps"
   alias Dpsl="docker ps | sed -n '2p' | awk '{print $1}'"
   alias Dritrm="docker run -it --rm"
-  alias Drmid="docker rmi $(docker images --filter 'dangling=true' -q --no-trunc)"
+#  alias Drmid="docker rmi $(docker images --filter 'dangling=true' -q --no-trunc)"
   alias Drmif="docker rmi -f"
 fi
 
