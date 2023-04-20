@@ -163,9 +163,14 @@ fi
 #Docker aliases
 which docker 2>/dev/null 1>/dev/null
 if [ $? -eq 0 ]; then
-  alias Deit="docker exec -it"
-  alias Di="docker images"
+  alias Dsh="docker exec -it $1 /bin/sh"
+  alias Dbash="docker exec -it $1 /bin/bash"
+  alias Dterm="docker exec -it"
+  alias Dstop="docker stop $1"
+  alias Dstart="docker start $1"
   alias Dil="docker images | sed -n '2p' | awk '{print $3}' | pbcopy"
+  alias Di="docker images"
+  alias Deit="docker exec -it"
   alias Dk="docker kill"
   alias Dkl="docker ps | sed -n '2p' | awk '{print $1}' | xargs docker kill"
   alias Dps="docker ps"
