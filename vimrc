@@ -46,3 +46,13 @@ set expandtab
 "------------------------------------------------------------
 set background=dark
 set paste
+
+"-----------------------------------------------------------
+" Enable cursor position restore
+" dont forget to make directory ~/vimrc
+"if has("autocmd")
+"    set viewoptions=cursor,folds
+"    au BufWinLeave * mkview
+"    au BufWinEnter * silent loadview
+"endif
+
