@@ -10,7 +10,7 @@
 #  unalias mc
 ## delete all aliases
 # unalias -a
-
+# v.1.2 231010
 
 # ARCHIVE EXTRACTION
 # usage: Unpack <file>
@@ -46,8 +46,11 @@ Unpack ()
 #Systemd/systemctl
 alias Status="sudo systemctl status "
 alias Start="sudo systemctl start "
+alias SStart="sudo systemctl start "
+alias SStart="sudo systemctl start $1; sleep 5; sudo systemctl status $1 "
 alias Stop="sudo systemctl stop "
 alias Restart="sudo systemctl restart "
+alias RRestart="sudo systemctl restart $1; sleep 5; sudo systemctl status $1 "
 alias Reload="sudo systemctl reload "
 alias Daemon-reload="systemctl daemon-reload"
 alias Enable="sudo systemctl enable "
@@ -212,3 +215,9 @@ alias Root='sudo -iu root'
 
 # Weather
 alias Weather="curl -4 http://wttr.in"
+
+#Other
+# Start screen
+alias Scr="screen -rd || screen"
+#Nginx reload
+alias Nrl="nginx -t && Reload nginx"
